@@ -85,4 +85,6 @@
 
     <color name="discount_text_olor">#888686</color>
     <color name="dark_blue">#1B5BA8</color>
+    <color name="HeaderColor">#4e4e4e</color>
+
 </resources>

@@ -88,6 +88,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 			case R.id.loginBtn:
 				if (validatingFields())
 				{
+					phoneNumber = "9848677674";
+					password = "123456";
 					Map<String, String> params = new HashMap<String, String>();
 					params.put(Constants.ws_api_key, Constants.ws_api_key_value);
 					params.put(Constants.customer_mobile, phoneNumber);//"9848677674"
@@ -145,6 +147,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 						if (response_info.equals("1"))
 						{
 							String hostel_id = jsonArraydata.getJSONObject(0).getString(Constants.hostel_id);
+							SharedPrefsUtil.setStringPreference(mContext, "HOSTEL_DATA", jsonArraydata.toString());
 							SharedPrefsUtil.setStringPreference(mContext, "hostel_id", hostel_id);
 							String hostelname = jsonArraydata.getJSONObject(0).getString("hostelname");
 							SharedPrefsUtil.setStringPreference(mContext, "hostelname", hostelname);
