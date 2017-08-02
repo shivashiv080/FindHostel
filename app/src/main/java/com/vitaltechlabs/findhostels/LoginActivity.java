@@ -19,6 +19,7 @@ import com.vitaltechlabs.findhostels.serverapis.ApiRequest;
 import com.vitaltechlabs.findhostels.serverapis.ApiRequestReferralCode;
 import com.vitaltechlabs.findhostels.serverapis.Constants;
 import com.vitaltechlabs.findhostels.serverapis.RestApiCallUtil;
+import com.vitaltechlabs.findhostels.util.SharedPrefsUtil;
 
 
 import org.json.JSONArray;
@@ -144,9 +145,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 						if (response_info.equals("1"))
 						{
 							String hostel_id = jsonArraydata.getJSONObject(0).getString(Constants.hostel_id);
+							SharedPrefsUtil.setStringPreference(mContext, "hostel_id", hostel_id);
 							String hostelname = jsonArraydata.getJSONObject(0).getString("hostelname");
+							SharedPrefsUtil.setStringPreference(mContext, "hostelname", hostelname);
+							String area = jsonArraydata.getJSONObject(0).getString("area");
+							SharedPrefsUtil.setStringPreference(mContext, "area", area);
+							String city = jsonArraydata.getJSONObject(0).getString("city");
+							SharedPrefsUtil.setStringPreference(mContext, "city", city);
 							Toast.makeText(mContext, "Successfully Login", Toast.LENGTH_SHORT).show();
-							Toast.makeText(mContext, "Hostel Name " + hostelname, Toast.LENGTH_SHORT).show();
+//							Toast.makeText(mContext, "Hostel Name " + hostelname, Toast.LENGTH_SHORT).show();
 							Toast.makeText(mContext, "Hostel Id " + hostel_id, Toast.LENGTH_SHORT).show();
 							Intent i = new Intent(mContext, MainActivity.class);
 							startActivity(i);
